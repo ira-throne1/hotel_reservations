@@ -1,0 +1,33 @@
+# 1) remove temporary folders: go level up to hadoop:
+rm -Rf tmpdata
+rm -Rf dfsdata
+
+# 2) format datanodes
+hadoop namenode -format
+
+# 3) start hadoop:
+start-all.sh
+
+# 4) check all 6 services are running
+jps
+
+# 5) create folder, upload the files
+hadoop fs -mkdir /project
+hadoop fs -put hotel-booking.csv /project
+hadoop fs -put customer-reservations.csv /project
+
+# 6) open http://localhost:9870, make sure the files are there
+
+# 7) run main.sh
+./main.sh
+
+# 8) enter inputs
+hdfs:///project
+hdfs:///project
+/project
+
+# 9) stop hadoop:
+stop-all.sh
+
+
+
